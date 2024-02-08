@@ -10,25 +10,36 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) => {
-  const paramsId = Number(params?.id);
-  if (!paramsId || isNaN(paramsId)) {
-    return {
-      notFound: true,
-    };
-  }
-  const post = await prisma.post.findUnique({
-    where: {
-      id: String(params?.id),
-    },
-    include: {
-      author: {
-        select: { name: true },
+  try {
+    const postId = String(params?.id)
+
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postId,
       },
-    },
-  });
-  return {
-    props: post,
-  };
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    });
+
+    if (!post) {
+      return {
+        notFound: true
+      }
+    }
+    return {
+      props: { post },
+    };
+  } catch (err) {
+    console.log('🚀 ~ err:', err)
+    return {
+      props: {
+        post: {} as Post
+      }
+    }
+  }
 };
 
 // const Post: React.FC<PostProps> = (props) => {
