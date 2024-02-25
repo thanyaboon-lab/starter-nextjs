@@ -1,0 +1,159 @@
+{
+    "menu": [
+        {
+          "menuId": "COMPONENTS",
+          "menuTitle": "Components",
+          "menuName": "components",
+          "children": [
+            {
+                "menuId": "ACTIONS",
+                "menuTitle": "Actions",
+                "menuName": "",
+                "children": [
+                    {
+                        "menuId": "BUTTON",
+                        "menuTitle": "Button",
+                        "menuName": "button",
+                        "children": []
+                    },
+                    {
+                        "menuId": "DROPDOWN",
+                        "menuTitle": "Dropdown",
+                        "menuName": "dropdown",
+                        "children": []
+                    },
+                    {
+                        "menuId": "MODAL",
+                        "menuTitle": "Modal",
+                        "menuName": "modal",
+                        "children": []
+                    },
+                    {
+                        "menuId": "SWAP",
+                        "menuTitle": "Swap",
+                        "menuName": "swap",
+                        "children": []
+                    },
+                    {
+                        "menuId": "THEME_CONTROLLER",
+                        "menuTitle": "Theme Controller",
+                        "menuName": "theme_controller",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "menuId": "DATA_DISPLAY",
+                "menuTitle": "Data display",
+                "menuName": "",
+                "children": [
+                    {
+                        "menuId": "ACCORDION",
+                        "menuTitle": "Accordion",
+                        "menuName": "accordion",
+                        "children": []
+                    },
+                    {
+                        "menuId": "AVATAR",
+                        "menuTitle": "Avatar",
+                        "menuName": "avatar",
+                        "children": []
+                    },
+                    {
+                        "menuId": "BADGE",
+                        "menuTitle": "Badge",
+                        "menuName": "badge",
+                        "children": []
+                    },
+                    {
+                        "menuId": "CARD",
+                        "menuTitle": "Card",
+                        "menuName": "card",
+                        "children": []
+                    },
+                    {
+                        "menuId": "CAROUSEL",
+                        "menuTitle": "Carousel",
+                        "menuName": "carousel",
+                        "children": []
+                    },
+                    {
+                        "menuId": "TABLE",
+                        "menuTitle": "Table",
+                        "menuName": "table",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "menuId": "NAVIGATION",
+                "menuTitle": "Navigation",
+                "menuName": "",
+                "children": [
+                    {
+                        "menuId": "BREADCRUMB",
+                        "menuTitle": "Breadcrumb",
+                        "menuName": "breadcrumb",
+                        "children": []
+                    },
+                    {
+                        "menuId": "LINK",
+                        "menuTitle": "Link",
+                        "menuName": "link",
+                        "children": []
+                    },
+                    {
+                        "menuId": "NAVBAR",
+                        "menuTitle": "Navbar",
+                        "menuName": "navbar",
+                        "children": []
+                    },
+                    {
+                        "menuId": "PAGINATION",
+                        "menuTitle": "Pagination",
+                        "menuName": "pagination",
+                        "children": []
+                    },
+                    {
+                        "menuId": "STEP",
+                        "menuTitle": "Step",
+                        "menuName": "step",
+                        "children": []
+                    },
+                    {
+                        "menuId": "TAB",
+                        "menuTitle": "Tab",
+                        "menuName": "tab",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "menuId": "FEEDBACK",
+                "menuTitle": "Feedback",
+                "menuName": "",
+                "children": [
+                    {
+                        "menuId": "ALERT",
+                        "menuTitle": "Alert",
+                        "menuName": "alert",
+                        "children": []
+                    },
+                    {
+                        "menuId": "LOADING",
+                        "menuTitle": "Loading",
+                        "menuName": "loading",
+                        "children": []
+                    },
+                    {
+                        "menuId": "SKELETON",
+                        "menuTitle": "Skeleton",
+                        "menuName": "skeleton",
+                        "children": []
+                    }
+                ]
+            }
+          ]
+        }
+      ]
+}

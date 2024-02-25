@@ -1,6 +1,7 @@
 import '@/asset/global.css';
 import { Noto_Sans_Thai } from "next/font/google";
 import DashBoardLayout from '@/layout/DashboardLayout';
+import { NextAuthProvider } from './providers';
 
 export const metadata = {
   title: 'My-UI',
@@ -21,12 +22,14 @@ export default function RootLayout(props: {
   children: React.ReactNode;
 }) {
   return (
-    <html className={`${notoSansFont.variable}`}>
-      <body className="font-noto-sans">
-        <DashBoardLayout>
-          {props.children}
-        </DashBoardLayout>
-      </body>
-    </html>
+      <html className={`${notoSansFont.variable}`}>
+        <body className="font-noto-sans">
+        <NextAuthProvider>
+          <DashBoardLayout>
+            {props.children}
+          </DashBoardLayout>
+        </NextAuthProvider>
+        </body>
+      </html>
   );
 }

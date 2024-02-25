@@ -15,7 +15,12 @@ const config: Config = {
     fontFamily: {
       "noto-sans": "var(--font-notoSans)",
     },
+    borderRadius: {
+      "btn": "var(--rounded-btn)",
+      "box": "var(--rounded-box)",
+    },
   },
+  darkMode: ['class', '[data-mode="dark"]'],
   plugins: [],
 };
 export default config;
