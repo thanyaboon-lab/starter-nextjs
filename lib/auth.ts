@@ -23,42 +23,61 @@ export const authOptions: NextAuthOptions = {
             clientId: process.env.GITHUB_CLIENT_ID as string,
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
         }),
-        CredentialsProvider({
-            name: "Sign in",
-            id: "credentials",
-            credentials: {
-                email: {
-                    label: "Email",
-                    type: "email",
-                    placeholder: "example@example.com",
-                },
-                password: { label: "Password", type: "password" },
+        // CredentialsProvider({
+        //     name: "Sign in",
+        //     id: "credentials",
+        //     credentials: {
+        //         email: {
+        //             label: "Email",
+        //             type: "email",
+        //             placeholder: "example@example.com",
+        //         },
+        //         password: { label: "Password", type: "password" },
+        //     },
+        //     async authorize(credentials) {
+        //         console.log('🚀 ~ credentials:', credentials)
+        //         if (!credentials?.email || !credentials.password) {
+        //             return null;
+        //         }
+
+        //         const user = await prisma.user.findUnique({
+        //             where: {
+        //                 email: credentials.email,
+        //             },
+        //         });
+        //         console.log('🚀 ~ user:', user)
+
+        //         if (!user || !(await compare(credentials.password, user.password!))) {
+        //             return null;
+        //         }
+
+        //         return {
+        //             id: user.id,
+        //             email: user.email,
+        //             name: user.name,
+        //             randomKey: "Hey cool",
+        //         };
+        //     },
+        // }),
+        {
+            id: "custom-oauth",
+            name: "custom-oauth",
+            type: "oauth",
+            clientId: process.env.OIDC_CLIENT_ID as string,
+            clientSecret: process.env.OIDC_CLIENT_SECRET as string,
+            wellKnown: "http://localhost:3000/.well-known/openid-configuration",
+            authorization: { params: { scope: "openid profile offline_access" } },
+            idToken: true,
+            checks: ["pkce", "state"],
+            profile(profile) {
+              return {
+                id: profile.sub,
+                name: profile.name,
+                email: profile.email,
+                image: profile.picture,
+              }
             },
-            async authorize(credentials) {
-                console.log('🚀 ~ credentials:', credentials)
-                if (!credentials?.email || !credentials.password) {
-                    return null;
-                }
-
-                const user = await prisma.user.findUnique({
-                    where: {
-                        email: credentials.email,
-                    },
-                });
-                console.log('🚀 ~ user:', user)
-
-                if (!user || !(await compare(credentials.password, user.password!))) {
-                    return null;
-                }
-
-                return {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    randomKey: "Hey cool",
-                };
-            },
-        }),
+          }
     ],
     callbacks: {
         session: ({ session, token }) => {
