@@ -1,4 +1,6 @@
 :root {
     --rounded-box: 1rem;
     --rounded-btn: .5rem;
+
+    --primary-color: rgb(105, 108, 255);
 }

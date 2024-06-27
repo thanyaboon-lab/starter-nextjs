@@ -11,6 +11,9 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      primary: 'rgb(var(--primary-color) / <alpha-value>)'
+    },
     extend: {},
     fontFamily: {
       "noto-sans": "var(--font-notoSans)",

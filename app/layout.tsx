@@ -24,11 +24,11 @@ export default function RootLayout(props: {
   return (
       <html className={`${notoSansFont.variable}`}>
         <body className="font-noto-sans">
-        <NextAuthProvider>
+        {/* <NextAuthProvider> */}
           <DashBoardLayout>
             {props.children}
           </DashBoardLayout>
-        </NextAuthProvider>
+        {/* </NextAuthProvider> */}
         </body>
       </html>
   );
