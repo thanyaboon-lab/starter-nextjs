@@ -12,7 +12,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      primary: 'rgb(var(--primary-color) / <alpha-value>)'
+      primary: 'var(--primary-color)'
     },
     extend: {},
     fontFamily: {
