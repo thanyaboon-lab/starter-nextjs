@@ -11,10 +11,19 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary: 'var(--primary-color)'
+    extend: {
+      colors: {
+        primary: 'var(--primary-color)',
+      },
+      textColor: {
+        "default": "var(--text-color-default)",
+        "secondary": "var(--text-color-secondary)"
+      },
+      backgroundColor: {
+        "default": "var(--bg-color-default)",
+        "page": "var(--bg-color-page)"
+      },
     },
-    extend: {},
     fontFamily: {
       "noto-sans": "var(--font-notoSans)",
     },

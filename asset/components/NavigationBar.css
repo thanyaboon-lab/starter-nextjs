@@ -7,7 +7,7 @@
       padding: .5rem 1rem;
       border-radius: var(--rounded-btn);
       &:hover {
-        background-color: aliceblue;
+        background-color: rgba(219, 219, 235, 0.04);
       }
 
       &::after {
@@ -44,7 +44,7 @@
         padding: .5rem 1rem;
         border-radius: var(--rounded-btn);
         &:hover {
-          background-color: aliceblue;
+          background-color: rgba(219, 219, 235, 0.04);
         }
       }
     }

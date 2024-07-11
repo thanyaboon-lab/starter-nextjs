@@ -1,5 +1,8 @@
+'use client'
+
 import Link from "next/link"
 import menuList from '@/json/menuSidebar.json'
+import { usePathname } from "next/navigation";
 // import '/NavigationBar.css'
 
 interface MenuList {
@@ -10,16 +13,16 @@ interface MenuList {
 }
 
 function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
+  const currentPath = usePathname()
+  
   return (
     <ul className="menu-sidebar-group-item ms-3 ps-2">
-      {menu.children?.map((menuChildren, menuChildrenIndex) => {
+      {menu.children?.map((menuChildren) => {
         return (
-          <>
-            <li key={menuChildrenIndex}>
-              {menuChildren.menuName ? <Link href={`/${menuChildren.menuName}`} className="menu-item flex items-center">{menuChildren.menuTitle}</Link> : <h2 className="menu-item-title flex items-center">{menuChildren.menuTitle}</h2>}
-              {menuChildren.children!.length > 0 ? <RecursiveChildrenMenu menu={menuChildren} /> : null}
-            </li>
-          </>
+          <li key={menuChildren.menuId} className={`${currentPath.includes(menuChildren.menuName) && menuChildren.children!.length <= 0 ? 'bg-primary text-white rounded-[8px]' : ''}`}>
+            {menuChildren.menuName ? <Link href={`/${menuChildren.menuName}`} className="menu-item flex items-center">{menuChildren.menuTitle}</Link> : <h2 className="menu-item-title flex items-center">{menuChildren.menuTitle}</h2>}
+            {menuChildren.children!.length > 0 ? <RecursiveChildrenMenu menu={menuChildren} /> : null}
+          </li>
         )
       })}
     </ul>
@@ -28,8 +31,8 @@ function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
 
 export default function Sidebar({ className }: { className: string }) {
   return (
-    <div className={`${className} menu-sidebar scroll-smooth overflow-y-auto`}>
-      <aside>
+    <div className={`${className} menu-sidebar`}>
+      <aside className="flex flex-col fixed z-10 h-full w-[300px] bg-default shadow-lg shadow-slate-900">
         <div className="flex items-center gap-2 px-6 sticky top-0 z-10 mb-[5px]">
           <Link href="/">
             <div className="flex items-center gap-2 min-h-12">
@@ -37,7 +40,7 @@ export default function Sidebar({ className }: { className: string }) {
             </div>
           </Link>
         </div>
-        <ul className="px-4">
+        <ul className="px-4 overflow-y-auto slim-scrollbar">
           {menuList.menu.map((menu) =>
             <li key={menu.menuId}>
               <details open>
