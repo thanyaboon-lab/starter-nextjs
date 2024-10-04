@@ -24,17 +24,6 @@
       }
     }
     .menu-sidebar-group-item {
-      position: relative;
-      &::before {
-        content: '';
-        display: block;
-        height: 100%;
-        width: 1px;
-        background-color: darkgray;
-        position: absolute;
-        inset-inline-start: 0;
-      }
-
       .menu-item-title {
         font-size: 14px;
         padding: .5rem 1rem;
@@ -43,9 +32,6 @@
         font-size: 13px;
         padding: .5rem 1rem;
         border-radius: var(--rounded-btn);
-        &:hover {
-          background-color: rgba(219, 219, 235, 0.04);
-        }
       }
     }
 

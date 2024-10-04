@@ -1,4 +1,4 @@
-import { CardCollapsible } from "@/components/DataDisplay/CardAction";
+import { CardCollapsible } from "@/components/DataDisplay/Card";
 
 export default function Card () {
     return (

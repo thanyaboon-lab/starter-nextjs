@@ -3,25 +3,25 @@
 import { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
-interface CardActionProps {
+interface CardProps {
   title?: string;
   slotHeaderRight?: Function;
   children?: React.ReactNode;
 }
 
-export function CardAction({
+export function Card({
   title,
   slotHeaderRight,
   children,
-}: CardActionProps) {
+}: CardProps) {
   return (
-    <div className="rounded-[10px] bg-default shadow-lg shadow-slate-900">
+    <div className={`rounded-[10px] bg-default shadow-lg`}>
       <div className="flex items-center justify-between p-6">
         <label className="text-secondary text-xl">{title}</label>
         {slotHeaderRight ? slotHeaderRight() : null}
       </div>
-      <div className={`transition-[height] duration-300 ${children ? 'h-auto visible' : 'h-0'}`}>
-        <div className={`pb-6 px-6`}>{children}</div>
+      <div className={`transition-[height] duration-300 ${children ? 'h-auto visible' : 'h-0 invisible'}`}>
+        {children && <div className={`pb-6 px-6`}>{children}</div>}
       </div>
     </div>
   );
@@ -30,10 +30,10 @@ export function CardAction({
 export function CardCollapsible({
   title,
   children,
-}: CardActionProps) {
+}: CardProps) {
   const [isCollapse, setCollapse] = useState(true);
 
-  const BUttonCollapse = () => {
+  const ButtonCollapse = () => {
     return (
       <button
         className="rounded-[100%] hover:bg-gray-600 p-2"
@@ -44,8 +44,8 @@ export function CardCollapsible({
   };
 
   return (
-    <CardAction title={title} slotHeaderRight={BUttonCollapse}>
+    <Card title={title} slotHeaderRight={ButtonCollapse}>
       {isCollapse && children}
-    </CardAction>
+    </Card>
   );
 }

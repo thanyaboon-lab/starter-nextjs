@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeContext } from "@/providers/theme";
 import {
   useClick,
   useDismiss,
@@ -7,6 +8,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import React, { useContext } from "react";
 import { MouseEvent, KeyboardEvent, useRef, useState, useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
@@ -39,6 +41,8 @@ export function Dropdown<T>({
   slotContent,
   slotItems,
 }: DropdownProps<T>) {
+  const themeContext = useContext(ThemeContext);
+  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -158,9 +162,9 @@ export function Dropdown<T>({
           tabIndex={0}>
           {label && (
             <div
-              className={`absolute bg-[#2B2C40] p-1 dropdown-content-focus:text-primary ${
+              className={`absolute bg-page px-[4px] dropdown-content-focus:text-primary leading-3 transition-all ${
                 isOpen && "text-primary"
-              } ${isOpen || modelValue ? "top-[-13px] text-[10px]" : "top-1"}`}>
+              } ${isOpen || modelValue ? "top-[-7px] text-[10px]" : "top-3"}`}>
               {label}
             </div>
           )}
@@ -179,14 +183,14 @@ export function Dropdown<T>({
               ref={refs.setFloating}
               {...getFloatingProps()}
               role="listbox"
-              className="dropdown-items slim-scrollbar mt-1 shadow shadow-slate-950 bg-[#2B2C40] rounded-btn p-2 max-h-80 overflow-auto">
+              className={`dropdown-items slim-scrollbar mt-1 shadow ${themeContext.theme === 'dark' ? 'shadow-slate-950' : ''} bg-default rounded-btn p-2 max-h-80 overflow-auto`}>
               {options.map((option, index) => (
                 <div
                   key={index}
                   role="option"
                   aria-selected={selectedIndex === index}
-                  className={`p-2 hover:bg-primary rounded-btn [&:not(:last-child)]:mb-2 ${
-                    option.value === modelValue ? "bg-primary" : ""
+                  className={`p-2 hover:bg-primary hover:text-white rounded-btn [&:not(:last-child)]:mb-2 cursor-pointer ${
+                    option.value === modelValue ? "bg-primary text-white" : ""
                   } ${selectedIndex === index && "bg-[#0D9AF5]"}`}
                   onClick={() => handleSelect(option)}>
                   {option.title}

@@ -1,11 +1,4 @@
 :root {
     --rounded-box: 1rem;
     --rounded-btn: .5rem;
-
-    --primary-color: rgb(105, 108, 255);
-    
-    --text-color-default: rgba(219, 219, 235, 0.6);
-    --text-color-secondary: rgba(219, 219, 235, 0.87);
-    --bg-color-default: rgb(43, 44, 64, .95);
-    --bg-color-page: rgb(35, 35, 51);
 }

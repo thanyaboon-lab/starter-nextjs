@@ -21,7 +21,8 @@ const config: Config = {
       },
       backgroundColor: {
         "default": "var(--bg-color-default)",
-        "page": "var(--bg-color-page)"
+        "page": "var(--bg-color-page)",
+        "hover": "var(--bg-color-hover)"
       },
     },
     fontFamily: {

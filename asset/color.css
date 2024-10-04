@@ -1,0 +1,48 @@
+:root {
+    --primary-color-light: rgb(135, 137, 255);
+    --primary-color: rgb(105, 108, 255);
+    --primary-color-dark: rgb(94, 97, 230);
+
+    --secondary-color-light: rgb(157, 168, 181);
+    --secondary-color: rgb(133, 146, 163);
+    --secondary-color-dark: rgb(120, 131, 147);
+
+    --error-color-light: rgb(255, 101, 74);
+    --error-color: rgb(255, 62, 29);
+    --error-color-dark: rgb(230, 56, 26);
+
+    --waring-color-light: rgb(255, 188, 51);
+    --waring-color: rgb(255, 171, 0);
+    --waring-color-dark: rgb(230, 154, 0);
+
+    --info-color-light: rgb(53, 207, 240);
+    --info-color: rgb(3, 195, 236);
+    --info-color-dark: rgb(3, 175, 212);
+
+    --success-color-light: rgb(141, 228, 95);
+    --success-color: rgb(113, 221, 55);
+    --success-color-dark: rgb(102, 199, 50);
+
+
+
+}
+
+html {
+    &[data-theme=dark] {
+        --text-color-default: rgba(230, 230, 241, 0.7);
+        --text-color-secondary: rgba(219, 219, 235, 0.87);
+
+        --bg-color-default: rgba(43, 44, 64, 1);
+        --bg-color-page: rgb(35, 35, 51);
+        --bg-color-hover: rgba(68, 73, 80, 0.5);
+    }
+
+    &[data-theme=light] {
+        --text-color-default: rgb(34 48 62 / 0.9);
+        --text-color-secondary: rgb(34 48 62 / 0.7);
+
+        --bg-color-default: rgba(255, 255, 255, 1);
+        --bg-color-page: rgba(245, 245, 249, 1);
+        --bg-color-hover: rgba(34 48 62 / 0.06);
+    }
+}

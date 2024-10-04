@@ -6,6 +6,31 @@
           "menuName": "components",
           "children": [
             {
+                "menuId": "FOUNDATION",
+                "menuTitle": "Foundation",
+                "menuName": "foundation",
+                "children": [
+                    {
+                        "menuId": "COLORS",
+                        "menuTitle": "Colors",
+                        "menuName": "colors",
+                        "children": []
+                    },
+                    {
+                        "menuId": "TYPOGRAPHY",
+                        "menuTitle": "Typography",
+                        "menuName": "typography",
+                        "children": []
+                    },
+                    {
+                        "menuId": "SHADOWS",
+                        "menuTitle": "Shadows",
+                        "menuName": "shadows",
+                        "children": []
+                    }
+                ]
+            },
+            {
                 "menuId": "ACTIONS",
                 "menuTitle": "Actions",
                 "menuName": "",
