@@ -5,13 +5,22 @@ import menuList from "@/json/menuSidebar.json";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { ThemeContext } from "@/providers/theme";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
 // import '/NavigationBar.css'
 
 interface MenuList {
   menuId: string;
   menuTitle: string;
   menuName: string;
+  url: string
   children?: MenuList[];
+}
+
+interface SidebarProps {
+  className: string;
+  activeSidebar: boolean;
+  toggleSidebar: (value: boolean) => void;
 }
 
 function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
@@ -30,20 +39,18 @@ function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
           <li key={menuChildren.menuId} className={``}>
             {menuChildren.menuName ? (
               <Link
-                href={`/${menuChildren.menuName}`}
-                className={`menu-item flex items-center ${
+                href={`/${menuChildren.url}`}
+                className={`menu-item flex items-center hover:bg-hover ${
                   currentPath.includes(menuChildren.menuName) &&
                   menuChildren.children!.length <= 0
                     ? "!bg-primary text-white rounded-[8px]"
                     : ""
-                } ${
-                  menuChildren.children!.length <= 0 ? "hover:bg-hover" : ""
                 }`}>
                 {menuChildren.menuTitle}
               </Link>
             ) : (
               <h2
-                className={`menu-item-title flex items-center  ${
+                className={`menu-item-title flex items-center ${
                   menuChildren.children!.length <= 0 ? "hover:bg-hover" : ""
                 }`}>
                 {menuChildren.menuTitle}
@@ -59,18 +66,29 @@ function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
   );
 }
 
-export default function Sidebar({ className }: { className: string }) {
-  const themeContext = useContext(ThemeContext);
+export default function Sidebar({
+  className,
+  activeSidebar,
+  toggleSidebar,
+}: SidebarProps) {
   return (
-    <div className={`${className} menu-sidebar`}>
+    <div
+      className={`${className} menu-sidebar relative lg:left-0 transition-all ${
+        activeSidebar ? "left-0" : "left-[-300px]"
+      }`}>
       <aside
-        className={`flex flex-col fixed z-10 h-full w-[300px] bg-default shadow-lg ${
-          themeContext.theme === "dark" ? "shadow-slate-900" : ""
-        }`}>
-        <div className="flex items-center gap-2 px-6 sticky top-0 z-10 mb-[5px]">
-          <Link href="/">
+        className={`flex flex-col fixed z-30 h-full w-[300px] bg-default shadow-lg`}>
+        <div className="flex items-center gap-2 ps-6 pe-3 sticky top-0 z-10 mb-[5px]">
+          <Link href="/" className="w-full">
             <div className="flex items-center gap-2 min-h-12">
               <div className="text-lg md:text-2xl">My-UI</div>
+              <button
+                className="block lg:hidden ms-auto"
+                onClick={(e) => {
+                  e.preventDefault(), e.stopPropagation(), toggleSidebar(false);
+                }}>
+                <IoMdCloseCircleOutline className="w-6 h-6" />
+              </button>
             </div>
           </Link>
         </div>

@@ -4,28 +4,33 @@
           "menuId": "COMPONENTS",
           "menuTitle": "Components",
           "menuName": "components",
+          "url": "",
           "children": [
             {
                 "menuId": "FOUNDATION",
                 "menuTitle": "Foundation",
                 "menuName": "foundation",
+                "url": "foundation",
                 "children": [
                     {
                         "menuId": "COLORS",
                         "menuTitle": "Colors",
                         "menuName": "colors",
+                        "url": "foundation/colors",
                         "children": []
                     },
                     {
                         "menuId": "TYPOGRAPHY",
                         "menuTitle": "Typography",
                         "menuName": "typography",
+                        "url": "foundation/typography",
                         "children": []
                     },
                     {
                         "menuId": "SHADOWS",
                         "menuTitle": "Shadows",
                         "menuName": "shadows",
+                        "url": "foundation/shadows",
                         "children": []
                     }
                 ]
@@ -33,36 +38,42 @@
             {
                 "menuId": "ACTIONS",
                 "menuTitle": "Actions",
-                "menuName": "",
+                "menuName": "actions",
+                "url": "",
                 "children": [
                     {
                         "menuId": "BUTTON",
                         "menuTitle": "Button",
                         "menuName": "button",
+                        "url": "actions/button",
                         "children": []
                     },
                     {
                         "menuId": "DROPDOWN",
                         "menuTitle": "Dropdown",
                         "menuName": "dropdown",
+                        "url": "actions/dropdown",
                         "children": []
                     },
                     {
                         "menuId": "MODAL",
                         "menuTitle": "Modal",
                         "menuName": "modal",
+                        "url": "actions/modal",
                         "children": []
                     },
                     {
                         "menuId": "SWAP",
                         "menuTitle": "Swap",
                         "menuName": "swap",
+                        "url": "actions/swap",
                         "children": []
                     },
                     {
                         "menuId": "THEME_CONTROLLER",
                         "menuTitle": "Theme Controller",
-                        "menuName": "theme_controller",
+                        "menuName": "theme-controller",
+                        "url": "actions/theme-controller",
                         "children": []
                     }
                 ]
@@ -70,42 +81,49 @@
             {
                 "menuId": "DATA_DISPLAY",
                 "menuTitle": "Data display",
-                "menuName": "",
+                "menuName": "data-display",
+                "url": "",
                 "children": [
                     {
                         "menuId": "ACCORDION",
                         "menuTitle": "Accordion",
                         "menuName": "accordion",
+                        "url": "data-display/accordion",
                         "children": []
                     },
                     {
                         "menuId": "AVATAR",
                         "menuTitle": "Avatar",
                         "menuName": "avatar",
+                        "url": "data-display/avatar",
                         "children": []
                     },
                     {
                         "menuId": "BADGE",
                         "menuTitle": "Badge",
                         "menuName": "badge",
+                        "url": "data-display/badge",
                         "children": []
                     },
                     {
                         "menuId": "CARD",
                         "menuTitle": "Card",
                         "menuName": "card",
+                        "url": "data-display/card",
                         "children": []
                     },
                     {
                         "menuId": "CAROUSEL",
                         "menuTitle": "Carousel",
                         "menuName": "carousel",
+                        "url": "data-display/carousel",
                         "children": []
                     },
                     {
                         "menuId": "TABLE",
                         "menuTitle": "Table",
                         "menuName": "table",
+                        "url": "data-display/table",
                         "children": []
                     }
                 ]
@@ -113,42 +131,49 @@
             {
                 "menuId": "NAVIGATION",
                 "menuTitle": "Navigation",
-                "menuName": "",
+                "menuName": "navigation",
+                "url": "",
                 "children": [
                     {
                         "menuId": "BREADCRUMB",
                         "menuTitle": "Breadcrumb",
                         "menuName": "breadcrumb",
+                        "url": "navigation/breadcrumb",
                         "children": []
                     },
                     {
                         "menuId": "LINK",
                         "menuTitle": "Link",
                         "menuName": "link",
+                        "url": "navigation/link",
                         "children": []
                     },
                     {
                         "menuId": "NAVBAR",
                         "menuTitle": "Navbar",
                         "menuName": "navbar",
+                        "url": "navigation/navbar",
                         "children": []
                     },
                     {
                         "menuId": "PAGINATION",
                         "menuTitle": "Pagination",
                         "menuName": "pagination",
+                        "url": "navigation/pagination",
                         "children": []
                     },
                     {
                         "menuId": "STEP",
                         "menuTitle": "Step",
                         "menuName": "step",
+                        "url": "navigation/step",
                         "children": []
                     },
                     {
                         "menuId": "TAB",
                         "menuTitle": "Tab",
                         "menuName": "tab",
+                        "url": "navigation/tab",
                         "children": []
                     }
                 ]
@@ -156,24 +181,28 @@
             {
                 "menuId": "FEEDBACK",
                 "menuTitle": "Feedback",
-                "menuName": "",
+                "menuName": "feedback",
+                "url": "",
                 "children": [
                     {
                         "menuId": "ALERT",
                         "menuTitle": "Alert",
                         "menuName": "alert",
+                        "url": "feedback/alert",
                         "children": []
                     },
                     {
                         "menuId": "LOADING",
                         "menuTitle": "Loading",
                         "menuName": "loading",
+                        "url": "feedback/loading",
                         "children": []
                     },
                     {
                         "menuId": "SKELETON",
                         "menuTitle": "Skeleton",
                         "menuName": "skeleton",
+                        "url": "feedback/skeleton",
                         "children": []
                     }
                 ]

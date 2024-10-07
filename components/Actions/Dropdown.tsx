@@ -1,6 +1,5 @@
 "use client";
 
-import { ThemeContext } from "@/providers/theme";
 import {
   useClick,
   useDismiss,
@@ -41,7 +40,6 @@ export function Dropdown<T>({
   slotContent,
   slotItems,
 }: DropdownProps<T>) {
-  const themeContext = useContext(ThemeContext);
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -183,7 +181,7 @@ export function Dropdown<T>({
               ref={refs.setFloating}
               {...getFloatingProps()}
               role="listbox"
-              className={`dropdown-items slim-scrollbar mt-1 shadow ${themeContext.theme === 'dark' ? 'shadow-slate-950' : ''} bg-default rounded-btn p-2 max-h-80 overflow-auto`}>
+              className={`dropdown-items slim-scrollbar mt-1 shadow bg-default rounded-btn p-2 max-h-80 overflow-auto`}>
               {options.map((option, index) => (
                 <div
                   key={index}

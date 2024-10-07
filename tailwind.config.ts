@@ -17,13 +17,17 @@ const config: Config = {
       },
       textColor: {
         "default": "var(--text-color-default)",
-        "secondary": "var(--text-color-secondary)"
+        "secondary": "var(--text-color-secondary)",
+        "tertiary": "var(--text-color-tertiary)"
       },
       backgroundColor: {
         "default": "var(--bg-color-default)",
         "page": "var(--bg-color-page)",
         "hover": "var(--bg-color-hover)"
       },
+      borderColor: {
+        "default": "var(--border-color-default)",
+      }
     },
     fontFamily: {
       "noto-sans": "var(--font-notoSans)",

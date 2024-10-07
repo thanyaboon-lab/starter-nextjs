@@ -17,7 +17,7 @@ export function Card({
   return (
     <div className={`rounded-[10px] bg-default shadow-lg`}>
       <div className="flex items-center justify-between p-6">
-        <label className="text-secondary text-xl">{title}</label>
+        <label className="text-tertiary text-xl">{title}</label>
         {slotHeaderRight ? slotHeaderRight() : null}
       </div>
       <div className={`transition-[height] duration-300 ${children ? 'h-auto visible' : 'h-0 invisible'}`}>
