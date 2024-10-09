@@ -3,19 +3,12 @@
 import Link from "next/link";
 import menuList from "@/json/menuSidebar.json";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "@/providers/theme";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { Menu } from "@/interfaces/base/menu";
 
 // import '/NavigationBar.css'
-
-interface MenuList {
-  menuId: string;
-  menuTitle: string;
-  menuName: string;
-  url: string
-  children?: MenuList[];
-}
 
 interface SidebarProps {
   className: string;
@@ -23,9 +16,20 @@ interface SidebarProps {
   toggleSidebar: (value: boolean) => void;
 }
 
-function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
+function RecursiveChildrenMenu({ menu }: { menu: Menu }) {
   const currentPath = usePathname();
   const themeContext = useContext(ThemeContext);
+
+  useEffect(() => {
+    autoScroll()
+  }, [])
+
+  const autoScroll = () => {
+    const menuSideBarActiveElement = document.querySelector('.menu-sidebar .menu-item.active')
+    if (menuSideBarActiveElement) {
+      menuSideBarActiveElement.scrollIntoView({ block: 'center', behavior: 'auto' });
+    }
+  };
 
   return (
     <ul
@@ -41,9 +45,8 @@ function RecursiveChildrenMenu({ menu }: { menu: MenuList }) {
               <Link
                 href={`/${menuChildren.url}`}
                 className={`menu-item flex items-center hover:bg-hover ${
-                  currentPath.includes(menuChildren.menuName) &&
-                  menuChildren.children!.length <= 0
-                    ? "!bg-primary text-white rounded-[8px]"
+                  currentPath === `/${menuChildren.url}`
+                    ? "active !bg-primary text-white rounded-[8px]"
                     : ""
                 }`}>
                 {menuChildren.menuTitle}

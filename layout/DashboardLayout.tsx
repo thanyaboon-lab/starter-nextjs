@@ -5,7 +5,11 @@ import Sidebar from "@/components/NavigationBar/Sidebar";
 import { ThemeContext } from "@/providers/theme";
 import { FloatingOverlay } from "@floating-ui/react";
 import { Noto_Sans_Thai } from "next/font/google";
+import { usePathname } from "next/navigation";
 import { Suspense, useCallback, useContext, useState } from "react";
+import menuList from "@/json/menuSidebar.json";
+import { Menu } from "@/interfaces/base/menu";
+import { Breadcrumbs } from "@/components/NavigationBar/Breadcrumb";
 
 const notoSansFont = Noto_Sans_Thai({
   weight: ["400", "700"],
@@ -20,12 +24,44 @@ export default function DashBoardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const currentPath = usePathname();
   const themeContext = useContext(ThemeContext);
   const [activeSidebar, setActiveSidebar] = useState(false);
 
   const toggleSidebar = useCallback((newValue: boolean) => {
     setActiveSidebar(newValue);
   }, []);
+
+  const getCurrentlyMenuList = () => {
+    let menuItems: Menu[] = [
+      {
+        menuId: "HOME",
+        menuTitle: "Home",
+        menuName: "home",
+        url: "/",
+        children: [],
+      },
+    ];
+
+    const menuChildrenList = menuList.menu.flatMap((m) => m.children);
+    const menuChildrenItem = menuChildrenList.find((m) =>
+      currentPath.includes(m.url)
+    );
+    if (menuChildrenItem) {
+      const childrenItem = menuChildrenItem.children.find(
+        (m) => `/${m.url}` === currentPath
+      );
+      if (childrenItem) {
+        menuItems = [...menuItems, menuChildrenItem, childrenItem];
+      } else {
+        menuItems = [...menuItems, menuChildrenItem];
+      }
+    }
+    return menuItems;
+  };
+
+  const menuItems = getCurrentlyMenuList();
+  console.log('🚀 ~ menuItems:', menuItems)
 
   return (
     <html
@@ -55,7 +91,10 @@ export default function DashBoardLayout({
               />
             </header>
             <Suspense>
-              <main className="p-6">{children}</main>
+              <main className="p-6">
+                <Breadcrumbs menuList={menuItems} />
+                {children}
+              </main>
             </Suspense>
           </div>
         </div>

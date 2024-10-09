@@ -1,0 +1,19 @@
+.breadCrumbsContainer {
+ .breadcrumbs {
+    .breadcrumbs-item {
+        &:not(:last-child) {
+            &::after {
+                content: "";
+                display: block;
+                margin: 0 .5rem;
+                background: var(--breadcrumb-separator);
+                width: 10px;
+                height: 10px;
+                opacity: .5;
+                border-color: var(--border-color-default);
+                filter: var(--breadcrumb-separator-filter);
+            }
+        }
+    }
+ }   
+}

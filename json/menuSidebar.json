@@ -39,7 +39,7 @@
                 "menuId": "ACTIONS",
                 "menuTitle": "Actions",
                 "menuName": "actions",
-                "url": "",
+                "url": "actions",
                 "children": [
                     {
                         "menuId": "BUTTON",
@@ -82,7 +82,7 @@
                 "menuId": "DATA_DISPLAY",
                 "menuTitle": "Data display",
                 "menuName": "data-display",
-                "url": "",
+                "url": "data-display",
                 "children": [
                     {
                         "menuId": "ACCORDION",
@@ -132,7 +132,7 @@
                 "menuId": "NAVIGATION",
                 "menuTitle": "Navigation",
                 "menuName": "navigation",
-                "url": "",
+                "url": "navigation",
                 "children": [
                     {
                         "menuId": "BREADCRUMB",
@@ -182,7 +182,7 @@
                 "menuId": "FEEDBACK",
                 "menuTitle": "Feedback",
                 "menuName": "feedback",
-                "url": "",
+                "url": "feedback",
                 "children": [
                     {
                         "menuId": "ALERT",
