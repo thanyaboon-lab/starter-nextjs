@@ -1,5 +1,6 @@
 "use client";
 
+import { CardBase } from "@/components/DataDisplay/Card";
 import { Breadcrumbs } from "@/components/NavigationBar/Breadcrumb";
 import { Menu } from "@/interfaces/base/menu";
 import menuList from "@/json/menuSidebar.json";
@@ -32,5 +33,9 @@ export default function Page() {
     }
   }
 
-  return <Breadcrumbs menuList={menuItems}></Breadcrumbs>;
+  return (
+    <CardBase title="Breadcrumbs">
+      <Breadcrumbs menuList={menuItems}></Breadcrumbs>
+    </CardBase>
+  );
 }

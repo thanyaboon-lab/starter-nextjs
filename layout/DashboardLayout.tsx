@@ -82,18 +82,20 @@ export default function DashBoardLayout({
             activeSidebar={activeSidebar}
             toggleSidebar={toggleSidebar}
           />
-          <div className="h-dvh">
-            <div className="fixed top-0 h-3 w-full bg-page backdrop-opacity-10 backdrop-blur-md"></div>
-            <header className="px-6 sticky top-3">
+          <div className="flex flex-col">
+            {/* <div className="fixed top-0 z-10 h-3 w-full bg-page backdrop-opacity-10 backdrop-blur-md"></div> */}
+            <header className="sticky top-0 z-10 pt-4">
               <Navbar
                 activeSidebar={activeSidebar}
                 toggleSidebar={toggleSidebar}
               />
             </header>
             <Suspense>
-              <main className="p-6">
-                <Breadcrumbs menuList={menuItems} />
-                {children}
+              <main>
+                <div className="p-6">
+                  <Breadcrumbs menuList={menuItems} />
+                  {children}
+                </div>
               </main>
             </Suspense>
           </div>

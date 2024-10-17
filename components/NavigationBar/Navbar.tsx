@@ -17,7 +17,7 @@ export default function Navbar({ activeSidebar, toggleSidebar }: NavbarProps) {
 
   return (
     <>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 px-6 w-full">
         <button
           className="lg:hidden p-2 rounded-btn border border-default hover:text-white hover:border-white"
           onClick={() => toggleSidebar(!activeSidebar)}>

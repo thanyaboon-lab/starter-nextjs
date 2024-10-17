@@ -26,27 +26,35 @@
 
 html {
     &[data-theme=dark] {
+        --bg-color-default-rgb: 43, 44, 64;
+        --bg-color-page-rgb: 35, 35, 51;
+        --bg-color-paper: #232333;
+
         --text-color-default: rgba(230, 230, 241, 0.7);
         --text-color-secondary: rgba(219, 219, 235, 0.87);
         --text-color-tertiary: rgba(219, 219, 235, 1);
 
-        --bg-color-default: rgba(43, 44, 64, 1);
-        --bg-color-page: rgb(35, 35, 51);
+        --bg-color-default: rgba(var(--bg-color-default-rgb), 1);
+        --bg-color-page: rgb(var(--bg-color-page-rgb));
         --bg-color-hover: rgba(68, 73, 80, 0.5);
 
-        --border-color-default: rgba(219, 219, 235, 0.87);
+        --border-color-default: rgba(219, 219, 235, 0.27);
 
         --tw-shadow-color: rgba(15, 23, 42, 1);
         --tw-shadow: var(--tw-shadow-colored);
     }
 
     &[data-theme=light] {
+        --bg-color-default-rgb: 255, 255, 255;
+        --bg-color-page-rgb: 245, 245, 249;
+        --bg-color-paper: #F5F5F9;
+
         --text-color-default: rgb(34 48 62 / 0.9);
         --text-color-secondary: rgb(34 48 62 / 0.7);
         --text-color-tertiary: rgb(34 48 62 / 0.5);
 
-        --bg-color-default: rgba(255, 255, 255, 1);
-        --bg-color-page: rgba(245, 245, 249, 1);
+        --bg-color-default: rgba(var(--bg-color-default-rgb), 1);
+        --bg-color-page: rgba(var(--bg-color-page-rgb), 1);
         --bg-color-hover: rgba(34 48 62 / 0.06);
 
         --border-color-default: rgb(34 48 62 / 0.7);
