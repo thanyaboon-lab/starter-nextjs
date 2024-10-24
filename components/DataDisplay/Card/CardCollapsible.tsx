@@ -14,7 +14,7 @@ export function CardCollapsible({
   const ButtonCollapse = () => {
     return (
       <button
-        className="rounded-[100%] hover:bg-gray-600 p-2"
+        className="rounded-[100%] hover:bg-hover p-2"
         onClick={() => setCollapse(!isCollapse)}>
         {icon ? (
           icon

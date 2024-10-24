@@ -1,0 +1,103 @@
+table {
+    border-collapse: separate; /* Don't collapse */
+    border-spacing: 0;
+    &.border {
+      .column-sticky {
+        border-right: 1px solid #e3e7f0;
+      }
+    }
+    thead {
+      tr {
+        th {
+          color: #697586;
+          padding: 0.25rem 0.5rem;
+          height: 32px;
+          white-space: nowrap;
+          background-color: #f8fafc;
+          border: none;
+          /* .icon-sort > svg {
+            vertical-align: middle;
+          } */
+          &.is-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+          }
+          &.column-sticky {
+            z-index: 3;
+          }
+        }
+      }
+    }
+
+    tbody {
+      > tr:not(.sortable-chosen) > :not(caption) {
+        border-width: v-bind(borderWidth);
+        border-bottom: 0;
+        border-right: 0;
+      }
+      tr {
+        &:hover {
+          td {
+            background-color: #e1f6f2;
+          }
+        }
+        td {
+          color: #202939;
+          font-size: 14px;
+          vertical-align: middle;
+          padding: 0.25rem 0.5rem;
+        }
+      }
+      .content-empty {
+        padding: 24px 0;
+        &-title {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: normal;
+          text-align: center;
+          color: #202939;
+          margin-top: 12px;
+        }
+        &-description {
+          font-size: 12px;
+          font-weight: 400;
+          color: #697586;
+          margin-top: 8px;
+        }
+      }
+    }
+    tfoot {
+      > tr > :not(caption) {
+        border-width: v-bind(borderWidth);
+        border-bottom: 0;
+        border-right: 0;
+      }
+      &.is-sticky {
+        position: sticky;
+        bottom: -1px;
+        z-index: 2;
+      }
+    }
+    .column-sticky {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      &:not(:first-child) {
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 100%;
+          bottom: 0;
+          width: 7px;
+          background: linear-gradient(
+            90deg,
+            rgba(28, 55, 130, 0.12) 0%,
+            rgba(28, 55, 130, 0) 100%
+          );
+        }
+      }
+    }
+  }
