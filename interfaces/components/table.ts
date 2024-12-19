@@ -20,17 +20,19 @@ export interface FieldDefinition {
 
 export type SortDirection = null | "ASC" | "DESC";
 
-export interface SortFields<T extends string> {
-  orderBy: T;
+export interface SortFields {
+  orderBy: string;
   orderDirection: SortDirection;
 }
 
-export interface TableNormal<T> {
+export type ItemGroupModel<T> = (T extends (infer U)[] ? U : T) & Partial<Record<string, any>>
+
+export interface TableNormalModel<T> {
   itemGroup?: T[];
   checkedDisable?: boolean;
 }
 
-export interface TableAccordion<T> extends TableNormal<T> {
+export interface TableAccordionModel<T> extends TableNormalModel<T> {
   collapsed?: boolean
   isExpanded?: boolean
 }

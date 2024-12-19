@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Dropdown, DropdownOptions } from "@/components/Actions/Dropdown";
 import React from "react";
@@ -27,11 +27,13 @@ export default function Page() {
 
   const handleChangeDropdown = useCallback((newValue: string | null) => {
     setValue(newValue);
-  }, [])
+  }, []);
 
   return (
-    <>
-      <Dropdown modelValue={value} options={options} label="Age" onChange={(value) => handleChangeDropdown(value)}></Dropdown>
-    </>
-  )
+    <Dropdown
+      modelValue={value}
+      options={options}
+      label="Age"
+      onChange={(value) => handleChangeDropdown(value)}></Dropdown>
+  );
 }

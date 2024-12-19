@@ -7,7 +7,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import React, { useContext } from "react";
+import React from "react";
 import { MouseEvent, KeyboardEvent, useRef, useState, useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
@@ -40,7 +40,6 @@ export function Dropdown<T>({
   slotContent,
   slotItems,
 }: DropdownProps<T>) {
-  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -59,7 +58,7 @@ export function Dropdown<T>({
     dismiss,
   ]);
 
-  useEffect(() => autoScrollOnOpen(), [isOpen])
+  useEffect(() => autoScrollOnOpen(), [isOpen]);
 
   const handleSelect = (option: DropdownOptions<T>) => {
     if (modelValue === option.value) {
@@ -81,11 +80,11 @@ export function Dropdown<T>({
     const value =
       options && options.length > 0 ? options[selectedIndex].value : null;
     onChange(value);
-    toggleDropdown()
+    toggleDropdown();
   };
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -94,17 +93,18 @@ export function Dropdown<T>({
         case "ArrowDown":
           e.preventDefault();
           setSelectedIndex((prevIndex) => {
-            const newIndex = prevIndex < options.length - 1 ? prevIndex + 1 : prevIndex
+            const newIndex =
+              prevIndex < options.length - 1 ? prevIndex + 1 : prevIndex;
             scrollToOption(newIndex);
-            return newIndex
+            return newIndex;
           });
           break;
         case "ArrowUp":
           e.preventDefault();
           setSelectedIndex((prevIndex) => {
-            const newIndex = prevIndex > 0 ? prevIndex - 1 : prevIndex
+            const newIndex = prevIndex > 0 ? prevIndex - 1 : prevIndex;
             scrollToOption(newIndex);
-            return newIndex
+            return newIndex;
           });
           break;
         case "Enter":
@@ -128,75 +128,73 @@ export function Dropdown<T>({
 
   const autoScrollOnOpen = () => {
     if (modelValue) {
-      const newIndex = options.findIndex(item => item.value === modelValue);
-      setSelectedIndex(newIndex)
-      scrollToOption(newIndex)
+      const newIndex = options.findIndex((item) => item.value === modelValue);
+      setSelectedIndex(newIndex);
+      scrollToOption(newIndex);
     } else {
-      setSelectedIndex(-1)
+      setSelectedIndex(-1);
     }
-  }
+  };
 
   const scrollToOption = (index: number) => {
     if (refs && refs.floating && refs.floating.current) {
       const option = refs.floating.current.children[index] as HTMLElement;
       if (option) {
-        option.scrollIntoView({ block: 'center', behavior: 'auto' });
+        option.scrollIntoView({ block: "center", behavior: "auto" });
       }
     }
   };
 
   return (
-    <>
-      <div className="">
-        <div
-          ref={refs.setReference}
-          {...getReferenceProps()}
-          role={disabled ? "" : "button"}
-          className={`dropdown-content flex items-center justify-between relative p-[10px] border rounded-btn min-h-10 max-h-10 outline-none ${
-            isOpen && "border-primary"
-          }`}
-          onClick={() => (disabled ? undefined : toggleDropdown())}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}>
-          {label && (
-            <div
-              className={`absolute bg-page px-[4px] dropdown-content-focus:text-primary leading-3 transition-all ${
-                isOpen && "text-primary"
-              } ${isOpen || modelValue ? "top-[-7px] text-[10px]" : "top-3"}`}>
-              {label}
-            </div>
-          )}
-          {slotContent ? slotContent() : modelValue || ""}
-          {modelValue && !disabled && (
-            <button onClick={clearSelection}>
-              <IoCloseCircleOutline className="text-lg" />
-            </button>
-          )}
-        </div>
-        {isOpen &&
-          (slotItems ? (
-            slotItems()
-          ) : (
-            <div
-              ref={refs.setFloating}
-              {...getFloatingProps()}
-              role="listbox"
-              className={`dropdown-items slim-scrollbar mt-1 shadow bg-default rounded-btn p-2 max-h-80 overflow-auto`}>
-              {options.map((option, index) => (
-                <div
-                  key={index}
-                  role="option"
-                  aria-selected={selectedIndex === index}
-                  className={`p-2 hover:bg-primary hover:text-white rounded-btn [&:not(:last-child)]:mb-2 cursor-pointer ${
-                    option.value === modelValue ? "bg-primary text-white" : ""
-                  } ${selectedIndex === index && "bg-[#0D9AF5]"}`}
-                  onClick={() => handleSelect(option)}>
-                  {option.title}
-                </div>
-              ))}
-            </div>
-          ))}
+    <div className="">
+      <div
+        ref={refs.setReference}
+        {...getReferenceProps()}
+        role={disabled ? "" : "button"}
+        className={`dropdown-content flex items-center justify-between relative p-[10px] border rounded-btn min-h-10 max-h-10 outline-none ${
+          isOpen && "border-primary"
+        }`}
+        onClick={() => (disabled ? undefined : toggleDropdown())}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}>
+        {label && (
+          <div
+            className={`absolute bg-page px-[4px] dropdown-content-focus:text-primary leading-3 transition-all ${
+              isOpen && "text-primary"
+            } ${isOpen || modelValue ? "top-[-7px] text-[10px]" : "top-3"}`}>
+            {label}
+          </div>
+        )}
+        {slotContent ? slotContent() : modelValue || ""}
+        {modelValue && !disabled && (
+          <button onClick={clearSelection}>
+            <IoCloseCircleOutline className="text-lg" />
+          </button>
+        )}
       </div>
-    </>
+      {isOpen &&
+        (slotItems ? (
+          slotItems()
+        ) : (
+          <div
+            ref={refs.setFloating}
+            {...getFloatingProps()}
+            role="listbox"
+            className={`dropdown-items slim-scrollbar mt-1 shadow bg-default rounded-btn p-2 max-h-80 overflow-auto`}>
+            {options.map((option, index) => (
+              <div
+                key={index}
+                role="option"
+                aria-selected={selectedIndex === index}
+                className={`p-2 hover:bg-primary hover:text-white rounded-btn [&:not(:last-child)]:mb-2 cursor-pointer ${
+                  option.value === modelValue ? "bg-primary text-white" : ""
+                } ${selectedIndex === index && "bg-[#0D9AF5]"}`}
+                onClick={() => handleSelect(option)}>
+                {option.title}
+              </div>
+            ))}
+          </div>
+        ))}
+    </div>
   );
 }
