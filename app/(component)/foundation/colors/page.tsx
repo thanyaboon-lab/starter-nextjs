@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@/components/DataDisplay/Card";
+import { CardBase } from "@/components/DataDisplay/Card";
 import { Theme, Variant } from "@/interfaces/base/color";
 import { defaultTheme, rgbStringToHex } from "@/utils/color";
 
@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div className="grid grid-cols-3 gap-2">
       {Object.entries(colors).map(([variant, value]) => (
-        <Card
+        <CardBase
           title={capitalizeFirstLetter(variant)}
           key={variant}>
           <div className="flex flex-col gap-3">
@@ -32,7 +32,7 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </Card>
+        </CardBase>
       ))}
     </div>
   );
