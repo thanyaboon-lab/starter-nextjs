@@ -11,7 +11,7 @@ import { Menu } from "@/interfaces/base/menu";
 // import '/NavigationBar.css'
 
 interface SidebarProps {
-  className: string;
+  className?: string;
   activeSidebar: boolean;
   toggleSidebar: (value: boolean) => void;
 }

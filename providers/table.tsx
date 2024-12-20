@@ -45,7 +45,6 @@ export function useTable<IRow, IColumn>(): TableProviderProps<IRow, IColumn> {
   const context = useContext(
     TableContext as Context<TableProviderProps<IRow, IColumn> | undefined>
   );
-  console.log('🚀 ~ context:', context)
   if (!context) {
     throw new Error("useTable must be used within a ClickProvider");
   }

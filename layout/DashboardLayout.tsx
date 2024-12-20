@@ -78,7 +78,6 @@ export default function DashBoardLayout({
         )}
         <div className="dashboard grid grid-cols-1 lg:grid-cols-[300px_auto] h-full text-default leading-[1.8]">
           <Sidebar
-            className=""
             activeSidebar={activeSidebar}
             toggleSidebar={toggleSidebar}
           />
