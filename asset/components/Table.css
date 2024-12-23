@@ -9,11 +9,11 @@ table {
     thead {
       tr {
         th {
-          color: #697586;
-          padding: 0.25rem 0.5rem;
+          color: var(--text-color-secondary);
+          padding: 0.25rem 1rem;
           height: 32px;
           white-space: nowrap;
-          background-color: #f8fafc;
+          background-color: var(--bg-color-default);
           border: none;
           /* .icon-sort > svg {
             vertical-align: middle;
@@ -39,14 +39,15 @@ table {
       tr {
         &:hover {
           td {
-            background-color: #e1f6f2;
+            background-color: var(--bg-color-hover);
           }
         }
         td {
-          color: #202939;
+          color: var(--text-color-default);
+          background-color: var(--bg-color-default);
           font-size: 14px;
           vertical-align: middle;
-          padding: 0.25rem 0.5rem;
+          padding: 0.25rem 1rem;
         }
       }
       .content-empty {
@@ -56,13 +57,13 @@ table {
           font-size: 14px;
           line-height: normal;
           text-align: center;
-          color: #202939;
+          color: var(--text-color-default);
           margin-top: 12px;
         }
         &-description {
           font-size: 12px;
           font-weight: 400;
-          color: #697586;
+          color: var(--text-color-secondary);
           margin-top: 8px;
         }
       }

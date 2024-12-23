@@ -76,12 +76,12 @@ export default function DashBoardLayout({
             onClick={() => toggleSidebar(false)}
           />
         )}
-        <div className="dashboard grid grid-cols-1 lg:grid-cols-[300px_auto] h-full text-default leading-[1.8]">
+        <div className="dashboard grid grid-cols-1 lg:grid-cols-[300px_calc(100dvw-300px)] overscroll-contain h-lvh text-default leading-[1.8]">
           <Sidebar
             activeSidebar={activeSidebar}
             toggleSidebar={toggleSidebar}
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col overscroll-contain">
             {/* <div className="fixed top-0 z-10 h-3 w-full bg-page backdrop-opacity-10 backdrop-blur-md"></div> */}
             <header className="sticky top-0 z-10 pt-4">
               <Navbar

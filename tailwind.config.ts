@@ -18,7 +18,10 @@ const config: Config = {
       textColor: {
         "default": "var(--text-color-default)",
         "secondary": "var(--text-color-secondary)",
-        "tertiary": "var(--text-color-tertiary)"
+        "tertiary": "var(--text-color-tertiary)",
+        "danger": "var(--error-color)",
+        "waring": "var(--waring-color)",
+        "success": "var(--success-color)"
       },
       backgroundColor: {
         "default": "var(--bg-color-default)",

@@ -21,10 +21,10 @@ export function TableNormal<
 >(props: TableNormalProps<IRow, IColumn>) {
   return (
     // <ClickProvider handleClick={props.onSelected}>
-    <TableProvider {...props}>
+    <TableProvider<IRow, IColumn> {...props}>
       <Table>
-        <TableGroupTHead />
-        <TableGroupTBody />
+        <TableGroupTHead<IRow, IColumn> />
+        <TableGroupTBody<IRow, IColumn> />
       </Table>
     </TableProvider>
     // </ClickProvider>
