@@ -18,14 +18,14 @@ export function TableGroupTBody<
     slotBodyColumnCheck,
     slotBodyColumn,
   } = useTable<IRow, IColumn>();
-  return items.map((item, index) => {
+  return items.map((tBodyItem, tBodyIndex) => {
     return (
-      <tbody key={index}>
+      <tbody key={tBodyIndex}>
         <tr role={canSelected ? "button" : ""}>
           {canChecked && (
             <th className="min-w-10">
               {slotBodyColumnCheck ? (
-                slotBodyColumnCheck(item, index, changeChecked)
+                slotBodyColumnCheck(tBodyItem, tBodyIndex, changeChecked)
               ) : (
                 <input type="checkbox"></input>
               )}
@@ -37,12 +37,12 @@ export function TableGroupTBody<
                 key={tdFieldIndex}
                 className={`${tdField.tdClass} ${normalizeClassesField(
                   tdField.tdClass,
-                  item[tdField.key],
+                  tBodyItem[tdField.key],
                   tdField.key,
-                  item
+                  tBodyItem
                 )} ${tdField.stickyColumn ? "column-sticky" : ""}`}>
-                {slotBodyColumn &&
-                  slotBodyColumn[`cell-${tdField.key}`]?.(item, index)}
+                {slotBodyColumn && slotBodyColumn[`cell-${tdField.key}`] ?
+                  slotBodyColumn[`cell-${tdField.key}`]?.(tBodyItem, tBodyIndex) : tBodyItem[tdField.key]}
               </td>
             );
           })}

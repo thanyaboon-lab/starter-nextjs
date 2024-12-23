@@ -25,7 +25,7 @@ export interface SortFields {
   orderDirection: SortDirection;
 }
 
-export type ItemGroupModel<T> = (T extends (infer U)[] ? U : T) & Partial<Record<string, any>>
+export type ItemGroupModel<T> = (T extends (infer U)[] ? U : T)
 
 export interface TableNormalModel<T> {
   itemGroup?: T[];

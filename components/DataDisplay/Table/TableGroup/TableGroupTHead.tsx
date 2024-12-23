@@ -49,7 +49,7 @@ export function TableGroupTHead<IRow, IColumn extends FieldDefinition>() {
                 className={`${field.thClass} ${field.stickyColumn ? "column-sticky" : ""} ${
                   stickyHeader ? "is-sticky" : ""
                 }`}>
-                {slotHeaderColumn ? (
+                {slotHeaderColumn && slotHeaderColumn[`head-${field.key}`] ? (
                   slotHeaderColumn[`head-${field.key}`]?.(field, index)
                 ) : (
                   <div

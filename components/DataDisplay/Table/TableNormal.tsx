@@ -15,8 +15,7 @@ import { TableGroupTHead } from "./TableGroup/TableGroupTHead";
 interface TableNormalProps<IRow, IColumn> extends TableProviderProps<IRow, IColumn> {}
 
 export function TableNormal<
-  IRow extends TableNormalModel<ItemGroupModel<IRow["itemGroup"]>> &
-    Partial<Record<string, any>>,
+  IRow extends TableNormalModel<ItemGroupModel<IRow["itemGroup"]>>,
   IColumn extends FieldDefinition
 >(props: TableNormalProps<IRow, IColumn>) {
   return (

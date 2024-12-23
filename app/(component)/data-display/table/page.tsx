@@ -1,3 +1,5 @@
+"use client"
+
 import { TableNormal } from "@/components/DataDisplay/Table";
 import { FieldDefinition } from "@/interfaces/components/table";
 
@@ -157,5 +159,10 @@ export default function Table() {
     },
   ];
 
-  return <TableNormal items={items} fields={field}></TableNormal>;
+  const slotBodyColumn: { [K in keyof typeof items[number] as `cell-${K}`]?: (item: typeof items[number], index: number) => React.ReactNode } = {
+    'cell-branch': (item) => <strong>{item.debit}</strong>,
+    
+  }
+
+  return <TableNormal items={items} fields={field} slotBodyColumn={slotBodyColumn}></TableNormal>;
 }

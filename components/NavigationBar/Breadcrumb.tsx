@@ -7,6 +7,7 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ menuList }: BreadcrumbsProps) {
+  console.log('🚀 ~ menuList:', menuList)
   return (
     <nav className="breadCrumbsContainer mb-3">
       <ul className="breadcrumbs flex items-center">

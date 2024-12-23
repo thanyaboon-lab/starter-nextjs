@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 type Props = {
   children?: React.ReactNode;
@@ -21,9 +21,9 @@ export const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState<Theme>("dark");
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
-  };
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

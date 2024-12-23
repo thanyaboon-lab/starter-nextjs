@@ -8,8 +8,8 @@ import {
 import { Context, createContext, ReactNode, useContext, useMemo } from "react";
 
 export interface TableProviderProps<
-  IRow = Partial<Record<string, any>>,
-  IColumn = FieldDefinition
+  IRow,
+  IColumn
 > {
   // props
   children?: ReactNode;
@@ -28,16 +28,16 @@ export interface TableProviderProps<
   onSelected?: () => IRow;
 
   // slots
-  slotHeaderTop?: (field: FieldDefinition[]) => ReactNode;
+  slotHeaderTop?: (field: IColumn[]) => ReactNode;
   slotHeaderColumn?: {
     [K in keyof IColumn as `head-${string}`]?: (
-      field: IColumn | Partial<Record<string, any>>,
+      field: IColumn,
       index: number
     ) => ReactNode;
   };
   slotBodyColumn?: {
     [K in keyof IRow as `cell-${K & string}`]?: (
-      item: IRow | Partial<Record<string, any>>,
+      item: IRow,
       index: number
     ) => ReactNode;
   };
@@ -46,17 +46,11 @@ export interface TableProviderProps<
     changeChecked: (index: number | null, newValue: boolean) => void
   ) => ReactNode;
   slotBodyColumnCheck?: (
-    item: IRow | Partial<Record<string, any>>,
+    item: IRow,
     index: number,
     changeChecked: (index: number | null, newValue: boolean) => void
   ) => ReactNode;
 }
-
-export interface TableInitialize<
-  IRow = Partial<Record<string, any>>,
-  IColumn = FieldDefinition
-> extends TableProviderProps<IRow, IColumn>,
-    TableUtils {}
 
 export interface TableUtils {
   // utils table
@@ -72,14 +66,20 @@ export interface TableUtils {
   ) => string | string[];
 }
 
+export interface TableInitialize<
+  IRow,
+  IColumn
+> extends TableProviderProps<IRow, IColumn>,
+    TableUtils {}
+
 // Create the context
-const TableContext = createContext<TableInitialize | undefined>(undefined);
+const TableContext = createContext<TableInitialize<any,any> | undefined>(undefined);
 
 // Create the provider
 export function TableProvider<
   IRow extends Partial<Record<string, any>>,
   IColumn extends FieldDefinition
->(props: TableInitialize<IRow, IColumn>) {
+>(props: TableProviderProps<IRow, IColumn>) {
   // Provide Utils Table
   const isAllChecked = useMemo<boolean | null>(() => {
     if (

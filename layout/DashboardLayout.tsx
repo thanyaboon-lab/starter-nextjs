@@ -6,7 +6,7 @@ import { ThemeContext } from "@/providers/theme";
 import { FloatingOverlay } from "@floating-ui/react";
 import { Noto_Sans_Thai } from "next/font/google";
 import { usePathname } from "next/navigation";
-import { Suspense, useCallback, useContext, useState } from "react";
+import { Suspense, useCallback, useContext, useMemo, useState } from "react";
 import menuList from "@/json/menuSidebar.json";
 import { Menu } from "@/interfaces/base/menu";
 import { Breadcrumbs } from "@/components/NavigationBar/Breadcrumb";
@@ -25,14 +25,14 @@ export default function DashBoardLayout({
   children: React.ReactNode;
 }) {
   const currentPath = usePathname();
-  const themeContext = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [activeSidebar, setActiveSidebar] = useState(false);
 
   const toggleSidebar = useCallback((newValue: boolean) => {
     setActiveSidebar(newValue);
   }, []);
 
-  const getCurrentlyMenuList = () => {
+  const getCurrentlyMenuList = useMemo(() => {
     let menuItems: Menu[] = [
       {
         menuId: "HOME",
@@ -58,15 +58,12 @@ export default function DashBoardLayout({
       }
     }
     return menuItems;
-  };
-
-  const menuItems = getCurrentlyMenuList();
-  console.log('🚀 ~ menuItems:', menuItems)
+  }, [currentPath]);
 
   return (
     <html
       className={`${notoSansFont.variable}`}
-      data-theme={themeContext.theme}>
+      data-theme={theme}>
       <body className="font-noto-sans bg-page">
         {activeSidebar && (
           <FloatingOverlay
@@ -92,7 +89,7 @@ export default function DashBoardLayout({
             <Suspense>
               <main>
                 <div className="p-6">
-                  <Breadcrumbs menuList={menuItems} />
+                  <Breadcrumbs menuList={getCurrentlyMenuList} />
                   {children}
                 </div>
               </main>
