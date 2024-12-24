@@ -193,7 +193,6 @@ export default function Table() {
 
   return (
     <TableNormal
-      showBorder
       stickyHeader
       items={itemsData}
       fields={field}
