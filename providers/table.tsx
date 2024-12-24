@@ -3,14 +3,12 @@
 import {
   ClassName,
   FieldDefinition,
+  ItemGroupModel,
   SortFields,
 } from "@/interfaces/components/table";
 import { Context, createContext, ReactNode, useContext, useMemo } from "react";
 
-export interface TableProviderProps<
-  IRow,
-  IColumn
-> {
+export interface TableProviderProps<IRow extends Partial<Record<string, any>>, IColumn> {
   // props
   children?: ReactNode;
   fields: IColumn[];
@@ -50,6 +48,8 @@ export interface TableProviderProps<
     index: number,
     changeChecked: (index: number | null, newValue: boolean) => void
   ) => ReactNode;
+  slotBodyRowItemsGroup?: (itemGroups: ItemGroupModel<IRow["itemGroup"]>[]) => ReactNode;
+  slotFooter?: (item: IRow, index: number) => ReactNode;
 }
 
 export interface TableUtils {
@@ -66,14 +66,14 @@ export interface TableUtils {
   ) => string | string[];
 }
 
-export interface TableInitialize<
-  IRow,
-  IColumn
-> extends TableProviderProps<IRow, IColumn>,
+export interface TableInitialize<IRow extends Partial<Record<string, any>>, IColumn>
+  extends TableProviderProps<IRow, IColumn>,
     TableUtils {}
 
 // Create the context
-const TableContext = createContext<TableInitialize<any,any> | undefined>(undefined);
+const TableContext = createContext<TableInitialize<any, any> | undefined>(
+  undefined
+);
 
 // Create the provider
 export function TableProvider<
@@ -158,7 +158,7 @@ export function TableProvider<
 }
 
 // Custom hook for accessing the context
-export function useTable<IRow, IColumn>(): Omit<
+export function useTable<IRow extends Partial<Record<string, any>>, IColumn>(): Omit<
   TableInitialize<IRow, IColumn>,
   "children"
 > {

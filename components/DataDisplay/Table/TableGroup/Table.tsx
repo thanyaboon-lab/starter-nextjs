@@ -14,7 +14,7 @@ export function Table({ children }: { children: ReactNode }) {
         className={
           tableResponsive ? "overflow-auto scrollbar h-full max-h-[500px]" : ""
         }>
-        <table className={`table mb-0 ${showBorder ? "border" : ""}`}>
+        <table className={`table mb-0 ${showBorder ? "border border-default" : ""}`}>
           {children}
         </table>
       </div>

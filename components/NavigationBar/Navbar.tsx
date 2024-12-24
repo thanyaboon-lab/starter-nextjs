@@ -13,7 +13,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeSidebar, toggleSidebar }: NavbarProps) {
-  const themeContext = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className="flex items-center gap-3 px-6 w-full">
@@ -36,12 +36,8 @@ export default function Navbar({ activeSidebar, toggleSidebar }: NavbarProps) {
           </button>
           <button
             className="p-2 rounded-[100%] hover:bg-hover"
-            onClick={() => themeContext.toggleTheme()}>
-            {themeContext.theme === "dark" ? (
-              <MdOutlineWbSunny />
-            ) : (
-              <IoMdMoon />
-            )}
+            onClick={() => toggleTheme()}>
+            {theme === "dark" ? <MdOutlineWbSunny /> : <IoMdMoon />}
           </button>
         </div>
       </div>

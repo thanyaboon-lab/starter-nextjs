@@ -21,10 +21,10 @@ table {
           &.is-sticky {
             position: sticky;
             top: 0;
-            z-index: 2;
+            z-index: 3;
           }
           &.column-sticky {
-            z-index: 3;
+            z-index: 4;
           }
         }
       }
@@ -84,21 +84,22 @@ table {
       position: sticky;
       left: 0;
       z-index: 2;
-      &:not(:first-child) {
-        &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 100%;
-          bottom: 0;
-          width: 7px;
-          background: linear-gradient(
-            90deg,
-            rgba(28, 55, 130, 0.12) 0%,
-            rgba(28, 55, 130, 0) 100%
-          );
-        }
+    }
+
+    :where(th.column-sticky:first-child, td.column-sticky:first-child) {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        bottom: 0;
+        width: 7px;
+        background: linear-gradient(
+          90deg,
+          rgba(28, 55, 130, 0.12) 0%,
+          rgba(28, 55, 130, 0) 100%
+        );
       }
     }
   }

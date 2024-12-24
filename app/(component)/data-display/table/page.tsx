@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { TableNormal } from "@/components/DataDisplay/Table";
 import { FieldDefinition } from "@/interfaces/components/table";
@@ -46,7 +46,7 @@ export default function Table() {
     { label: "จัดการ", key: "manage", thClass: "text-center" },
   ];
 
-  const items = [
+  const itemsData = [
     {
       branch: "สำนักงานใหญ่1",
       option: null,
@@ -159,10 +159,45 @@ export default function Table() {
     },
   ];
 
-  const slotBodyColumn: { [K in keyof typeof items[number] as `cell-${K}`]?: (item: typeof items[number], index: number) => React.ReactNode } = {
-    'cell-branch': (item) => <strong>{item.debit}</strong>,
-    
-  }
+  const slotBodyColumn: {
+    [K in keyof (typeof itemsData)[number] as `cell-${K}`]?: (
+      item: (typeof itemsData)[number],
+      index: number
+    ) => React.ReactNode;
+  } = {
+    "cell-branch": (item) => <strong>{item.debit}</strong>,
+  };
 
-  return <TableNormal items={items} fields={field} slotBodyColumn={slotBodyColumn}></TableNormal>;
+  const slotBodyRowItemsGroup = (
+    itemGroups: (typeof itemsData)[number]["itemGroup"][number][]
+  ) => {
+    return itemGroups.map((item, index) => {
+      return (
+        <tr key={index}>
+          <td colSpan={2} className="column-sticky">
+            {item.branch}
+          </td>
+          <td colSpan={2}>
+            {item.credit}
+          </td>
+          <td colSpan={2}>
+            {item.currency}
+          </td>
+          <td colSpan={2}>
+            {item.debit}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  return (
+    <TableNormal
+      showBorder
+      stickyHeader
+      items={itemsData}
+      fields={field}
+      slotBodyColumn={slotBodyColumn}
+      slotBodyRowItemsGroup={slotBodyRowItemsGroup}></TableNormal>
+  );
 }

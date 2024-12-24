@@ -1,8 +1,13 @@
-import { FieldDefinition } from "@/interfaces/components/table";
+import {
+  FieldDefinition,
+  ItemGroupModel,
+  TableNormalModel,
+} from "@/interfaces/components/table";
 import { useTable } from "@/providers/table";
 
 export function TableGroupTBody<
-  IRow extends Partial<Record<string, any>>,
+  IRow extends Partial<Record<string, any>> &
+    TableNormalModel<ItemGroupModel<IRow["itemGroup"]>>,
   IColumn extends FieldDefinition
 >() {
   const {
@@ -17,6 +22,8 @@ export function TableGroupTBody<
     //slots
     slotBodyColumnCheck,
     slotBodyColumn,
+    slotBodyRowItemsGroup,
+    slotFooter,
   } = useTable<IRow, IColumn>();
   return items.map((tBodyItem, tBodyIndex) => {
     return (
@@ -41,12 +48,22 @@ export function TableGroupTBody<
                   tdField.key,
                   tBodyItem
                 )} ${tdField.stickyColumn ? "column-sticky" : ""}`}>
-                {slotBodyColumn && slotBodyColumn[`cell-${tdField.key}`] ?
-                  slotBodyColumn[`cell-${tdField.key}`]?.(tBodyItem, tBodyIndex) : tBodyItem[tdField.key]}
+                {slotBodyColumn && slotBodyColumn[`cell-${tdField.key}`]
+                  ? slotBodyColumn[`cell-${tdField.key}`]?.(
+                      tBodyItem,
+                      tBodyIndex
+                    )
+                  : tBodyItem[tdField.key]}
               </td>
             );
           })}
         </tr>
+        <>
+          {tBodyItem.itemGroup &&
+            slotBodyRowItemsGroup &&
+            slotBodyRowItemsGroup(tBodyItem.itemGroup)}
+          {slotFooter && slotFooter(tBodyItem, tBodyIndex)}
+        </>
       </tbody>
     );
   });
